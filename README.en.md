@@ -33,5 +33,8 @@ make
 - CMake
 - Linux / WSL
 - Embedded design patterns
+- Device Abstract Layer
+- Finite State Machine
+- Git/GitHub
 
 ***
