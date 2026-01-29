@@ -1,23 +1,73 @@
+# Embedded Device Controller
 
-# Embedded Device Controller (C++)
+Embedded-style C++ приложение, имитирующее контроллер устройства с использованием
+конечного автомата (FSM) и уровня абстракции устройств (DAL).
 
-Embedded-style C++ application simulating a device controller using
-Finite State Machine (FSM) and Device Abstraction Layer (DAL).
+[English version](README.en.md)
 
-## Features
-- Finite State Machine (INIT / IDLE / ACTIVE / ERROR)
-- Device Abstraction Layer (GPIO, UART)
-- Platform-independent design
-- Embedded-style main loop
-- Logging subsystem
-- Graceful shutdown
-- Fake hardware implementations for desktop testing
+---
 
-## Architecture
-FSM is fully decoupled from hardware via abstract interfaces.
-Hardware implementation can be replaced without changing business logic.
+## Описание
 
-## Build
+Данный проект представляет собой embedded-style приложение на C++, в котором
+бизнес-логика полностью отделена от аппаратной части.
+
+Приложение может быть запущено:
+- на обычном ПК (Linux / WSL) с использованием эмуляций устройств (`FakeGPIO`, `FakeUART`);
+- на реальном embedded-устройстве при замене реализаций DAL без изменения логики FSM.
+
+Проект демонстрирует базовые принципы embedded-разработки и архитектурного проектирования.
+
+---
+
+## Архитектура
+
+Проект построен с использованием следующих подходов:
+
+- Finite State Machine (FSM) для управления состояниями устройства
+- Device Abstraction Layer (DAL) для изоляции аппаратной части
+- Чёткое разделение интерфейсов и реализаций
+- Embedded-style бесконечный main loop
+- Система логирования
+- Корректное завершение работы (graceful shutdown)
+
+FSM не зависит от конкретной реализации железа и взаимодействует с устройствами
+только через абстрактные интерфейсы.
+
+---
+
+## Структура проекта
+src/
+├── main.cpp # Точка входа, основной цикл
+
+├── fsm/ # Конечный автомат
+
+│ ├── fsm.h
+
+│ └── fsm.cpp
+
+├── dal/ # Уровень абстракции устройств
+
+│ ├── gpio.h
+
+│ ├── gpio.cpp
+
+│ ├── uart.h
+
+│ └── uart.cpp
+
+└── utils/
+
+├─── logger.h
+
+└─── logger.cpp
+
+---
+
+## Сборка
+
+Для сборки проекта используется CMake.
+
 ```bash
 mkdir build
 cd build
@@ -25,15 +75,31 @@ cmake ..
 make
 ```
 
-## Run
+---
+
+## Запуск
 ```bash
 ./device_controller
 ```
+Во время работы приложение выводит лог состояния устройства.
 
-## Tech Stack
+---
+
+## Технологии и инструменты
 - C++
 - CMake
 - Linux/WSL
+- Finite State Machine
+- Device Abstract Layer
 - Embedded design patterns
+- Git/GitHub
 
-***
+---
+
+## Назначение проекта
+Проект создан с целью:
+- демонстрации навыков C++ и embedded-разработки;
+- практики проектирования архитектуры с аппаратной абстракцией;
+- подготовки к работе с реальными embbedded-устройствами.
+
+---
