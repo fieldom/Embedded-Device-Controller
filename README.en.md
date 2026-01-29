@@ -23,12 +23,12 @@ mkdir build
 cd build
 cmake ..
 make
-
-##Run
+```
+## Run
 ```bash
 ./device_controller
-
-##Tech Stack
+```
+## Tech Stack
 - C++
 - CMake
 - Linux / WSL
