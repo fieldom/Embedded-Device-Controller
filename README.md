@@ -1,4 +1,3 @@
-_______________________[EGNLISH VERSION]__________________________
 
 # Embedded Device Controller (C++)
 
@@ -24,15 +23,20 @@ mkdir build
 cd build
 cmake ..
 make
+```
 
-##Run
+## Run
 ```bash
 ./device_controller
+```
 
-##Tech Stack
--C++
--CMake
--Linux / WSL
--Embedded design patterns
+## Tech Stack
+- C++
+- CMake
+- Linux/WSL
+- Embedded design patterns
 
-____________________[РУССКАЯ ВЕРСИЯ]___________________
+***
+
+
+
